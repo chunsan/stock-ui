@@ -1,0 +1,74 @@
+{
+  "entry": "src/index.js",
+  "theme": "./theme.config.js",
+  "env": {
+    "development": {
+      "extraBabelPlugins": [
+        "dva-hmr",
+        "transform-runtime",
+        ["import", { "libraryName": "antd", "style": "css" }],
+        ["module-resolver", {
+          "alias": {
+            "ReactDOM": "react-dom"
+          }
+        }]
+      ]
+    },
+    "production": {
+      "extraBabelPlugins": [
+        "transform-runtime",
+        ["import", { "libraryName": "antd", "style": "css" }],
+        ["module-resolver", {
+          "alias": {
+            "ReactDOM": "react-dom"
+          }
+        }]
+      ]
+    }
+  },
+  "xdllPlugin": {
+      "exclude": [
+        "babel-runtime"
+      ],
+      "include": [
+        "dva/router",
+        "dva/saga",
+        "dva/fetch"
+      ]
+  },
+  "externals": {
+    "react": "React",
+    "react-dom": "ReactDOM"
+  },
+  "proxy": {
+      "/apk": {
+        "target": "http://localhost:90",
+        "pathRewrite": { "^/apk" : "" },
+        "changeOrigin": true
+      },
+    "*.export": {
+      "target": "http://localhost:90",
+      "changeOrigin": true
+    },
+    "/web": {
+      "target": "http://localhost:90",
+      "changeOrigin": true
+    },
+    "/*/list": {
+        "target": "http://localhost:90",
+        "changeOrigin": true
+    },
+    "/*/add": {
+        "target": "http://localhost:90",
+        "changeOrigin": true
+    },
+    "/*/edit": {
+        "target": "http://localhost:90",
+        "changeOrigin": true
+    },
+    "/*/del": {
+        "target": "http://localhost:90",
+        "changeOrigin": true
+    }
+  }
+}
