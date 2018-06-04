@@ -58,7 +58,7 @@ class Layout extends React.Component {
 			<div>
 				<div style={{ float: 'left', height: '100vh', width: '15%', textAlign: 'center' }}>
 					<div className={styles.headLogo}>
-						<div className={styles.logoImg}>智能灌溉</div>
+						<div className={styles.logoImg}>股票记录</div>
 					</div>
 					<div style={{ height: 'calc(100vh - 60px)', borderRight: '1px solid #dedede', background: '#3e3e3e' }}><Menu /></div>
 				</div>
