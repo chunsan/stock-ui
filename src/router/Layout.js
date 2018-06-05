@@ -25,6 +25,13 @@ class Layout extends React.Component {
 			],
 			component: () => import('./user'),
 		});
+    this.Purchase = dynamic({
+      app,
+      models: () => [
+        import('../model/purchase'),
+      ],
+      component: () => import('./purchase'),
+    });
 		this.Error = dynamic({
 			app,
 			component: () => import('./error'),
@@ -34,6 +41,7 @@ class Layout extends React.Component {
 		return (
 			<Switch>
 				<Route exact path="/users" component={this.User} />
+				<Route exact path="/purchase" component={this.Purchase} />
 				<Route path="*" component={this.Error} />
 			</Switch>
 		);
