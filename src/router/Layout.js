@@ -36,10 +36,15 @@ class Layout extends React.Component {
 			app,
 			component: () => import('./error'),
 		});
+    this.Index = dynamic({
+      app,
+      component: () => import('./index'),
+    });
 	}
 	renderLayout= () => {
 		return (
 			<Switch>
+				<Route exact path="/" component={this.Index} />
 				<Route exact path="/users" component={this.User} />
 				<Route exact path="/purchase" component={this.Purchase} />
 				<Route path="*" component={this.Error} />

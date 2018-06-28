@@ -34,6 +34,17 @@ export async function fetch(filter, pageNo, pageSize) {
 }
 
 export async function add(params) {
+  let defaultStart = null;
+  let start = params.ctime;
+  if (start) {
+    defaultStart = moment(start)
+      .hour(0)
+      .minute(0)
+      .second(0)
+      .millisecond(0)
+      .format('YYYY-MM-DD HH:mm:ss');
+  }
+  params.ctime = defaultStart;
 	return request({
 		url: '/purchase/add',
 		data: params,

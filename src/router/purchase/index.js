@@ -27,6 +27,15 @@ class PurchaseList extends React.Component {
     }, {
 			title: '买入方式',
 			dataIndex: 'method',
+      render: (method) => {
+        if (method === 'PRINCIPAL') {
+          return <span>追加买入</span>;
+        } else if (method === 'BONUS') {
+          return <span>分红买入</span>;
+        } else if (method === 'SELLOUT') {
+          return <span>卖出资金买入</span>;
+        }
+      },
 		}, {
       title: '买入日期',
       dataIndex: 'ctime',
@@ -35,142 +44,72 @@ class PurchaseList extends React.Component {
       },
     },];
 		this.filterItems = [{
-			text: '用户名',
-			name: 'name',
+			text: '股票代码	',
+			name: 'code',
 			type: 'input',
 		}, {
-        text: '签到时间',
+      text: '买入方式',
+      name: 'method',
+      type: 'select',
+      style: {
+        width: 120,
+      },
+      options:[{value:'PRINCIPAL',text:'追加买入'},
+        {value:'BONUS',text:'分红买入'},
+        {value:'SELLOUT',text:'卖出资金买入'}],
+    }, {
+        text: '买入时间',
         name: 'time',
         type: 'daterange',
       },];
 	}
 	getAddFields = () => {
 		return [{
-			text: '用户名',
-			name: 'loginName',
+			text: '股票代号',
+			name: 'code',
 			type: 'input',
 			validate: [{
 				rules: [
-                    { required: true, message: '请输入用户名' },
+                    { required: true, message: '请输入股票代号' },
 				],
 				trigger: ['onBlur', 'onChange'],
 			}],
 		}, {
-			text: '昵称',
-			name: 'name',
-			type: 'input',
+			text: '股票数量',
+			name: 'amount',
+			type: 'number',
 			validate: [{
 				rules: [
-                    { required: true, message: '请输入昵称' },
+                    { required: true, message: '请输入股票数量' },
 				],
 				trigger: ['onBlur', 'onChange'],
 			}],
 		}, {
-			text: '电话号码',
-			name: 'phone',
-			type: 'input',
-			validate: [{
-				rules: [
-					{
-						required: true,
-						message: '请输入电话号码',
-						validator: (rule, value, callback) => {
-							const tel = /^1(3|4|5|7|8)\d{9}$/;
-							if (tel.test(value)) {
-								callback();
-							} else {
-								callback('电话号码错误');
-							}
-						},
-					},
-				],
-				trigger: ['onBlur'],
-			}],
-		}, {
-			text: 'Email',
-			name: 'email',
-			type: 'input',
-			validate: [{
-				rules: [
-					{
-						required: true,
-						message: '邮箱格式错误',
-						validator: (rule, value, callback) => {
-							const re = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
-							if (re.test(value)) {
-								callback();
-							} else {
-								callback('邮箱格式错误');
-							}
-						},
-					},
-				],
-				trigger: ['onBlur'],
-			}],
-		}];
-	};
-	getEditFields = () => {
-		return [{
-			text: '昵称',
-			name: 'name',
-			type: 'input',
-			validate: [{
-				rules: [
-                    { required: true, message: '请输入昵称' },
-				],
-				trigger: ['onBlur', 'onChange'],
-			}],
-		}, {
-			text: '电话号码',
-			name: 'phone',
-			type: 'input',
-			validate: [{
-				rules: [
-					{
-						required: true,
-						message: '请输入正确的电话号码',
-						validator: (rule, value, callback) => {
-							const tel = /^1(3|4|5|7|8)\d{9}$/;
-							if (tel.test(value)) {
-								callback();
-							} else {
-								callback('电话号码不正确');
-							}
-						},
-					},
-				],
-				trigger: ['onBlur'],
-			}],
-		}, {
-			text: 'Email',
-			name: 'email',
-			type: 'input',
-			validate: [{
-				rules: [
-					{
-						required: true,
-						message: '邮箱格式错误',
-						validator: (rule, value, callback) => {
-							const re = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
-							if (re.test(value)) {
-								callback();
-							} else {
-								callback('邮箱格式错误');
-							}
-						},
-					},
-				],
-				trigger: ['onBlur'],
-			}],
+      text: '买入价格',
+      name: 'price',
+      type: 'pricenum',
+      validate: [{
+        rules: [
+          { required: true, message: '请输入买入价格' },
+        ],
+        trigger: ['onBlur', 'onChange'],
+      }],
+    }, {
+      text: '买入方式',
+      name: 'method',
+      type: 'select',
+      options:[{value:'PRINCIPAL',text:'追加买入'},
+				{value:'BONUS',text:'分红买入'},
+        {value:'SELLOUT',text:'卖出资金买入'}],
+    }, {
+      text: '买入日期',
+      name: 'ctime',
+      type: 'date',
 		}];
 	};
 	add = (values, callback) => {
 		const { dispatch } = this.props;
 		dispatch({ type: 'purchase/add', payload: { values }, callback });
-	};
-	edit = (values, callback) => {
-		const { dispatch } = this.props;
-		dispatch({ type: 'purchase/edit', payload: { values }, callback });
 	};
 	del = (record) => {
 		const { dispatch } = this.props;
@@ -181,7 +120,7 @@ class PurchaseList extends React.Component {
 		dispatch({ type: 'purchase/fetch', payload: { filter, pageNo, pageSize } });
 	};
 	render = () => {
-		const { loading, addLoading, delLoading, editLoading, data } = this.props;
+		const { loading, addLoading, delLoading, data } = this.props;
 		return (
 			<div>
 				<Grid
@@ -190,13 +129,10 @@ class PurchaseList extends React.Component {
           editModal
           insert={this.add}
           del={this.del}
-          edit={this.edit}
           addLoading={addLoading}
           delLoading={delLoading}
-          editLoading={editLoading}
           filterItems={this.filterItems}
           insertFields={this.getAddFields()}
-          editFields={this.getEditFields()}
           data={data}
           refersh={this.refersh}
 				/>
@@ -211,7 +147,6 @@ function mapStateToProps(state) {
 		data: state.purchase,
 		loading: loading.effects['purchase/fetch'],
 		addLoading: loading.effects['purchase/add'],
-		editLoading: loading.effects['purchase/edit'],
 		delLoading: loading.effects['purchase/del'],
 	};
 }
