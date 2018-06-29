@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import moment from 'moment';
 import { Grid } from 'wsgcomponents';
 
-class PurchaseList extends React.Component {
+class SelloutList extends React.Component {
 	constructor(props) {
 		super(props);
 		this.columns = [{
@@ -16,28 +16,16 @@ class PurchaseList extends React.Component {
       title: '交易所名称',
       dataIndex: 'type',
     }, {
-			title: '买入数量',
+			title: '卖出数量',
 			dataIndex: 'amount',
 		}, {
-			title: '买入价格',
+			title: '卖出价格',
 			dataIndex: 'price',
 		}, {
       title: '当前价格',
       dataIndex: 'currentPrice',
     }, {
-			title: '买入方式',
-			dataIndex: 'method',
-      render: (method) => {
-        if (method === 'PRINCIPAL') {
-          return <span>追加买入</span>;
-        } else if (method === 'BONUS') {
-          return <span>分红买入</span>;
-        } else if (method === 'SELLOUT') {
-          return <span>卖出资金买入</span>;
-        }
-      },
-		}, {
-      title: '买入日期',
+      title: '卖出日期',
       dataIndex: 'ctime',
       render: (v = '') => {
         return moment(v).format("YYYY-MM-DD");
@@ -48,17 +36,17 @@ class PurchaseList extends React.Component {
 			name: 'code',
 			type: 'input',
 		}, {
-      text: '买入方式',
+      text: '卖出方式',
       name: 'method',
       type: 'select',
       style: {
         width: 120,
       },
-      options:[{value:'PRINCIPAL',text:'追加买入'},
-        {value:'BONUS',text:'分红买入'},
-        {value:'SELLOUT',text:'卖出资金买入'}],
+      options:[{value:'PRINCIPAL',text:'追加卖出'},
+        {value:'BONUS',text:'分红卖出'},
+        {value:'SELLOUT',text:'卖出资金卖出'}],
     }, {
-        text: '买入时间',
+        text: '卖出时间',
         name: 'time',
         type: 'daterange',
       },];
@@ -85,29 +73,22 @@ class PurchaseList extends React.Component {
 				trigger: ['onBlur', 'onChange'],
 			}],
 		}, {
-      text: '买入价格',
+      text: '卖出价格',
       name: 'price',
       type: 'pricenum',
       validate: [{
         rules: [
-          { required: true, message: '请输入买入价格' },
+          { required: true, message: '请输入卖出价格' },
         ],
         trigger: ['onBlur', 'onChange'],
       }],
     }, {
-      text: '买入方式',
-      name: 'method',
-      type: 'select',
-      options:[{value:'PRINCIPAL',text:'追加买入'},
-				{value:'BONUS',text:'分红买入'},
-        {value:'SELLOUT',text:'卖出资金买入'}],
-    }, {
-      text: '买入日期',
+      text: '卖出日期',
       name: 'ctime',
       type: 'date',
       validate: [{
         rules: [
-          { required: true, message: '请输入买入日期' },
+          { required: true, message: '请输入卖出日期' },
         ],
         trigger: ['onBlur', 'onChange'],
       }],
@@ -115,11 +96,11 @@ class PurchaseList extends React.Component {
 	};
 	add = (values, callback) => {
 		const { dispatch } = this.props;
-		dispatch({ type: 'purchase/add', payload: { values }, callback });
+		dispatch({ type: 'sellout/add', payload: { values }, callback });
 	};
 	refersh = (filter, pageNo, pageSize) => {
 		const { dispatch } = this.props;
-		dispatch({ type: 'purchase/fetch', payload: { filter, pageNo, pageSize } });
+		dispatch({ type: 'sellout/fetch', payload: { filter, pageNo, pageSize } });
 	};
 	render = () => {
 		const { loading, addLoading, data } = this.props;
@@ -144,10 +125,10 @@ class PurchaseList extends React.Component {
 function mapStateToProps(state) {
 	const { loading } = state;
 	return {
-		data: state.purchase,
-		loading: loading.effects['purchase/fetch'],
-		addLoading: loading.effects['purchase/add'],
+		data: state.sellout,
+		loading: loading.effects['sellout/fetch'],
+		addLoading: loading.effects['sellout/add'],
 	};
 }
 
-export default connect(mapStateToProps)(PurchaseList);
+export default connect(mapStateToProps)(SelloutList);

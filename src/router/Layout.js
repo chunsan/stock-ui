@@ -39,6 +39,13 @@ class Layout extends React.Component {
       ],
       component: () => import('./bonus'),
     });
+    this.Sellout = dynamic({
+      app,
+      models: () => [
+        import('../model/sellout'),
+      ],
+      component: () => import('./sellout'),
+    });
 		this.Error = dynamic({
 			app,
 			component: () => import('./error'),
@@ -55,6 +62,7 @@ class Layout extends React.Component {
 				<Route exact path="/users" component={this.User} />
 				<Route exact path="/purchase" component={this.Purchase} />
 				<Route exact path="/bonus" component={this.Bonus} />
+				<Route exact path="/sellout" component={this.Sellout} />
 				<Route path="*" component={this.Error} />
 			</Switch>
 		);

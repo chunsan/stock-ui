@@ -78,6 +78,12 @@ class BonusList extends React.Component {
       text: '分红日期',
       name: 'ctime',
       type: 'date',
+      validate: [{
+        rules: [
+          { required: true, message: '请输入分红日期' },
+        ],
+        trigger: ['onBlur', 'onChange'],
+      }],
 		}];
 	};
 	add = (values, callback) => {
