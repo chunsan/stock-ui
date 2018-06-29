@@ -54,7 +54,7 @@ export default class Index extends React.Component {
               <p>投入汇总:{this.state.principal}￥</p>
               <p>当前市值:{this.state.total}￥</p>
               <p>分红汇总:{this.state.bonusTotal}￥</p>
-              <p>分红余额:{this.state.bonusTotal}￥</p>
+              <p>分红余额:{this.state.bonusLeft}￥</p>
               <p>卖出余额:{this.state.sellLeft}￥</p>
               <p>持仓情况:</p>
               {this.infos()}

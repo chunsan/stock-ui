@@ -111,16 +111,12 @@ class PurchaseList extends React.Component {
 		const { dispatch } = this.props;
 		dispatch({ type: 'purchase/add', payload: { values }, callback });
 	};
-	del = (record) => {
-		const { dispatch } = this.props;
-		dispatch({ type: 'purchase/del', payload: { id: record.id, sn: record.sn, type: record.type } });
-	};
 	refersh = (filter, pageNo, pageSize) => {
 		const { dispatch } = this.props;
 		dispatch({ type: 'purchase/fetch', payload: { filter, pageNo, pageSize } });
 	};
 	render = () => {
-		const { loading, addLoading, delLoading, data } = this.props;
+		const { loading, addLoading, data } = this.props;
 		return (
 			<div>
 				<Grid
@@ -128,9 +124,7 @@ class PurchaseList extends React.Component {
           loading={loading}
           editModal
           insert={this.add}
-          del={this.del}
           addLoading={addLoading}
-          delLoading={delLoading}
           filterItems={this.filterItems}
           insertFields={this.getAddFields()}
           data={data}
@@ -147,7 +141,6 @@ function mapStateToProps(state) {
 		data: state.purchase,
 		loading: loading.effects['purchase/fetch'],
 		addLoading: loading.effects['purchase/add'],
-		delLoading: loading.effects['purchase/del'],
 	};
 }
 
