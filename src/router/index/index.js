@@ -51,11 +51,12 @@ export default class Index extends React.Component {
           </Col>
           <Col span={16}>
             <Card title="个人资产" style={{fontSize:20}}>
-              <p>投入汇总:{this.state.principal}￥</p>
-              <p>当前市值:{this.state.total}￥</p>
+              <p>本金汇总:{this.state.principal}￥</p>
+              <p>资产汇总:{this.state.total + this.state.bonusLeft + this.state.sellLeft}￥</p>
               <p>分红汇总:{this.state.bonusTotal}￥</p>
-              <p>分红余额:{this.state.bonusLeft}￥</p>
-              <p>卖出余额:{this.state.sellLeft}￥</p>
+              <p>市值资金池:{this.state.total}￥</p>
+              <p>分红资金池:{this.state.bonusLeft}￥</p>
+              <p>卖出资金池:{this.state.sellLeft}￥</p>
               <p>持仓情况:</p>
               {this.infos()}
             </Card>
