@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Col, Row } from 'antd';
 import { request } from '../../utils/index';
-
+import ReactEcharts from "echarts-for-react";
 
 export default class Index extends React.Component {
 
@@ -14,6 +14,7 @@ export default class Index extends React.Component {
       sellLeft:0,
       total:0,
       handle:[],
+      rank:[]
     };
   }
 
@@ -30,6 +31,7 @@ export default class Index extends React.Component {
           sellLeft:body.result.sellLeft?body.result.sellLeft:0,
           total:body.result.total?body.result.total:0,
           handle:body.result.handle,
+          rank:body.result.rank,
         });
       } else {
 
@@ -43,13 +45,48 @@ export default class Index extends React.Component {
     });
   }
 
+  getOtionTem= () =>  {
+    let x = [];
+    let y = [];
+    this.state.rank.map((info) => {
+      x.push(info.name);
+      y.push(info.percent);
+    });
+    const option = {
+      title: {
+        text: '市值增长比排行'
+      },
+      tooltip: {},
+      legend: {
+        data:['百分比']
+      },
+      xAxis: {
+        data: x
+      },
+      yAxis: {
+        name: '%',
+      },
+      series: [{
+        name: '市值增长',
+        type: 'bar',
+        data: y
+      }]
+    }
+    return option;
+  }
+
   render() {
     return (
       <div style={{ background: '#ECECEC', padding: '30px' }}>
-        <Row gutter={16}>
-          <Col span={4}>
+        <Row gutter={24}>
+          <Col span={12}>
+            <div>
+              <ReactEcharts ref={(e) => {
+                this.echarts_react = e;
+              }} option={this.getOtionTem()}/>
+            </div>
           </Col>
-          <Col span={16}>
+          <Col span={12}>
             <Card title="个人资产" style={{fontSize:20}}>
               <p>本金汇总:{this.state.principal}￥</p>
               <p>资产汇总:{this.state.total + this.state.bonusLeft + this.state.sellLeft}￥</p>
@@ -60,8 +97,6 @@ export default class Index extends React.Component {
               <p>持仓情况:</p>
               {this.infos()}
             </Card>
-          </Col>
-          <Col span={4}>
           </Col>
         </Row>
       </div>
