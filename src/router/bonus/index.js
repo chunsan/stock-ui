@@ -24,11 +24,17 @@ class BonusList extends React.Component {
 			title: '分红价格(￥)',
 			dataIndex: 'price',
 		}, {
-      title: '成本价格(￥)',
-      dataIndex: 'cost',
+      title: '买入成本(￥)',
+      dataIndex: 'totalCost',
     }, {
-      title: '分红比例(%)',
-      dataIndex: 'percent',
+      title: '本金成本(￥)',
+      dataIndex: 'pureCost',
+    }, {
+      title: '买入分红(%)',
+      dataIndex: 'totalPercent',
+    }, {
+      title: '本金分红(%)',
+      dataIndex: 'purePercent',
     }, {
       title: '分红日期',
       dataIndex: 'ctime',
