@@ -14,31 +14,49 @@ class SummaryList extends React.Component {
 			title: '年份',
 			dataIndex: 'year',
 		}, {
-      title: '市值(￥)',
-      dataIndex: 'market',
-    }, {
-      title: '资产(￥)',
-      dataIndex: 'asset',
-    }, {
-      title: '收益(￥)',
-      dataIndex: 'profit',
-    }, {
-      title: '分红(￥)',
-      dataIndex: 'bonusTotal',
-    }, {
-      title: '卖出汇总(￥)',
-      dataIndex: 'sellTotal',
-    }, {
-      title: '买入汇总(￥)',
-      dataIndex: 'buyTotal',
-    }, {
-      title: '投入本金(￥)',
+      title: '本金',
       dataIndex: 'buyPrincipal',
     }, {
-      title: '分红买入(￥)',
+      title: '累计本金',
+      dataIndex: 'principal',
+    }, {
+      title: '分红',
+      dataIndex: 'bonusTotal',
+    }, {
+      title: '累计分红',
+      dataIndex: 'bonus',
+    }, {
+      title: '当年分红比例',
+      dataIndex: 'bonusp',
+    }, {
+      title: '累计分红比例',
+      dataIndex: 'bonusPercent',
+    }, {
+      title: '市值',
+      dataIndex: 'market',
+    }, {
+      title: '资产',
+      dataIndex: 'asset',
+    }, {
+      title: '资产增量',
+      dataIndex: 'profit',
+    }, {
+      title: '资产增长率',
+      dataIndex: 'profitPercent',
+    }, {
+      title: '资产/本金',
+      dataIndex: 'profitTotal',
+    }, {
+      title: '当年卖出',
+      dataIndex: 'sellTotal',
+    }, {
+      title: '当年买入',
+      dataIndex: 'buyTotal',
+    }, {
+      title: '分红买入',
       dataIndex: 'buyBonus',
     }, {
-      title: '卖出资金买入(￥)',
+      title: '卖出资金买入',
       dataIndex: 'buySell',
     }];
 		this.filterItems = [{
