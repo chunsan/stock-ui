@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card, Col, Row } from 'antd';
 import { request } from '../../utils/index';
-import ReactEcharts from "echarts-for-react";
 
 export default class Index extends React.Component {
 
@@ -80,11 +79,6 @@ export default class Index extends React.Component {
       <div style={{ background: '#ECECEC', padding: '30px' }}>
         <Row gutter={24}>
           <Col span={12}>
-            <div>
-              <ReactEcharts ref={(e) => {
-                this.echarts_react = e;
-              }} option={this.getOtionTem()}/>
-            </div>
           </Col>
           <Col span={12}>
             <Card title="个人资产" style={{fontSize:20}}>
@@ -93,7 +87,7 @@ export default class Index extends React.Component {
               <p>分红汇总:{this.state.bonusTotal}￥</p>
               <p>市值资金池:{this.state.total}￥</p>
               <p>分红资金池:{this.state.bonusLeft}￥</p>
-              <p>卖出资金池:{this.state.sellLeft}￥</p>
+              <p>套利资金池:{this.state.sellLeft}￥</p>
               <p>持仓情况:</p>
               {this.infos()}
             </Card>

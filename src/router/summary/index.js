@@ -14,7 +14,7 @@ class SummaryList extends React.Component {
 			title: '年份',
 			dataIndex: 'year',
 		}, {
-      title: '本金',
+      title: '投入本金',
       dataIndex: 'buyPrincipal',
     }, {
       title: '累计本金',
@@ -26,10 +26,10 @@ class SummaryList extends React.Component {
       title: '累计分红',
       dataIndex: 'bonus',
     }, {
-      title: '当年分红比例',
+      title: '分红回报率',
       dataIndex: 'bonusp',
     }, {
-      title: '累计分红比例',
+      title: '累计分红回报率',
       dataIndex: 'bonusPercent',
     }, {
       title: '市值',
