@@ -6,8 +6,7 @@
     "build:dll": "roadhog buildDll",
     "test": "roadhog test",
     "lint": "eslint --ext .js src test",
-    "lintFix": "eslint --fix .js src",
-    "precommit": "npm run lint"
+    "lintFix": "eslint --fix .js src"
   },
   "dependencies": {
     "babel-runtime": "^6.22.0",
