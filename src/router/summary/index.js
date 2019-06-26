@@ -1,15 +1,10 @@
 import React from 'react';
 import { connect } from 'dva';
-import moment from 'moment';
 import { Grid } from 'wsgcomponents';
 
 class SummaryList extends React.Component {
 	constructor(props) {
 		super(props);
-
-    this.state = {
-    	options:[],
-    };
 		this.columns = [{
 			title: '年份',
 			dataIndex: 'year',
@@ -38,26 +33,17 @@ class SummaryList extends React.Component {
       title: '资产',
       dataIndex: 'asset',
     }, {
-      title: '资产增量',
+      title: '当年增量',
       dataIndex: 'profit',
     }, {
-      title: '资产增长率',
-      dataIndex: 'profitPercent',
+        title: '当年增长率',
+        dataIndex: 'profitPercent',
     }, {
-      title: '资产/本金',
+        title: '累计增量',
+        dataIndex: 'totalProfit',
+    }, {
+      title: '累计增长率',
       dataIndex: 'profitTotal',
-    }, {
-      title: '当年卖出',
-      dataIndex: 'sellTotal',
-    }, {
-      title: '当年买入',
-      dataIndex: 'buyTotal',
-    }, {
-      title: '分红买入',
-      dataIndex: 'buyBonus',
-    }, {
-      title: '卖出资金买入',
-      dataIndex: 'buySell',
     }];
 		this.filterItems = [{
 			text: '股票代码	',
