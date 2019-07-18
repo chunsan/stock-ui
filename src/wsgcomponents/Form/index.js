@@ -230,11 +230,11 @@ class MyForm extends React.Component {
       );
 		} else if (item.type === 'number') {
 			return getFieldDecorator(item.name, { initialValue, validate })(
-				<InputNumber placeholder={`请输入${item.text}`} {...other} step={100} min={100} style={{ width: 150 }}/>,
+				<InputNumber placeholder={`请输入${item.text}`} {...other} step={1} min={0} style={{ width: 150 }}/>,
       );
 		} else if (item.type === 'pricenum') {
       return getFieldDecorator(item.name, { initialValue, validate })(
-				<InputNumber placeholder={`请输入${item.text}`} {...other} step={0.01} min={1} style={{ width: 150 }}/>,
+				<InputNumber placeholder={`请输入${item.text}`} {...other} step={0.01} min={0} style={{ width: 150 }}/>,
       );
     } else if (item.type === 'hide') {
 			return getFieldDecorator(item.name, { initialValue, validate })(
