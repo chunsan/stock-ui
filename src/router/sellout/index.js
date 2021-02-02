@@ -83,6 +83,16 @@ class SelloutList extends React.Component {
         trigger: ['onBlur', 'onChange'],
       }],
     }, {
+			text: '手续费',
+			name: 'tax',
+			type: 'pricenum',
+			validate: [{
+				rules: [
+					{ required: true, message: '请输入手续费' },
+				],
+				trigger: ['onBlur', 'onChange'],
+			}],
+		}, {
       text: '卖出日期',
       name: 'ctime',
       type: 'date',

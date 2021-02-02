@@ -95,6 +95,16 @@ class PurchaseList extends React.Component {
         trigger: ['onBlur', 'onChange'],
       }],
     }, {
+			text: '手续费',
+			name: 'tax',
+			type: 'pricenum',
+			validate: [{
+				rules: [
+					{ required: true, message: '请输入手续费' },
+				],
+				trigger: ['onBlur', 'onChange'],
+			}],
+		}, {
       text: '买入方式',
       name: 'method',
       type: 'select',
