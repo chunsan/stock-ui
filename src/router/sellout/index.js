@@ -22,6 +22,12 @@ class SelloutList extends React.Component {
 			title: '卖出价格',
 			dataIndex: 'price',
 		}, {
+        title: '手续费',
+        dataIndex: 'tax',
+    }, {
+        title: '获利',
+        dataIndex: 'earn',
+    }, {
       title: '当前价格',
       dataIndex: 'currentPrice',
     }, {

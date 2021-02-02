@@ -21,6 +21,12 @@ class SummaryList extends React.Component {
       title: '累计分红',
       dataIndex: 'bonus',
     }, {
+        title: '套利',
+        dataIndex: 'tradeTotal',
+    }, {
+        title: '累计套利',
+        dataIndex: 'totalTrade',
+    }, {
       title: '分红回报率',
       dataIndex: 'bonusp',
     }, {

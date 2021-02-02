@@ -22,6 +22,9 @@ class PurchaseList extends React.Component {
 			title: '买入价格',
 			dataIndex: 'price',
 		}, {
+        title: '手续费',
+        dataIndex: 'tax',
+    }, {
       title: '当前价格',
       dataIndex: 'currentPrice',
     }, {
