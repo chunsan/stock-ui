@@ -60,6 +60,13 @@ class Layout extends React.Component {
 			],
 			component: () => import('./info'),
 		});
+		this.Trade = dynamic({
+			app,
+			models: () => [
+				import('../model/trade'),
+			],
+			component: () => import('./trade'),
+		});
 		this.Error = dynamic({
 			app,
 			component: () => import('./error'),
@@ -79,6 +86,7 @@ class Layout extends React.Component {
 				<Route exact path="/sellout" component={this.Sellout} />
 				<Route exact path="/summary" component={this.Summary} />
 				<Route exact path="/info" component={this.Info} />
+				<Route exact path="/trade" component={this.Trade} />
 				<Route path="*" component={this.Error} />
 			</Switch>
 		);

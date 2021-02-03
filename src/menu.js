@@ -5,7 +5,8 @@ const menu = [
     { id: '5', icon: 'laptop', name: '卖出流水', route: '/sellout' },
     { id: '6', icon: 'laptop', name: '年度汇总', route: '/summary' },
     { id: '7', icon: 'laptop', name: '个股统计', route: '/info' },
-    { id: '8', icon: 'laptop', name: '用戶', route: '/users', hide: true },
+    { id: '8', icon: 'laptop', name: '交易流水', route: '/trade' },
+    { id: '9', icon: 'laptop', name: '用戶', route: '/users', hide: true },
 ];
 
 export default menu;
