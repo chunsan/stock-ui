@@ -81,7 +81,8 @@ class TradeList extends React.Component {
             title: '资产',
             dataIndex: 'market',
             render: (v, r) => {
-                return r.market + r.left;
+                let num = r.market + r.left;
+                return num.toFixed(2);
             }
         }, {
             title: '累计增量',
