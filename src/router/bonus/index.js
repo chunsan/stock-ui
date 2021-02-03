@@ -27,7 +27,7 @@ class BonusList extends React.Component {
       title: '买入成本(￥)',
       dataIndex: 'totalCost',
     }, {
-      title: '本金成本(￥)',
+      title: '摊薄成本(￥)',
       dataIndex: 'pureCost',
     }, {
       title: '买入分红(%)',

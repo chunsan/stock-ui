@@ -78,9 +78,7 @@ export default class Index extends React.Component {
     return (
       <div style={{ background: '#ECECEC', padding: '30px' }}>
         <Row gutter={24}>
-          <Col span={12}>
-          </Col>
-          <Col span={12}>
+          <Col span={24}>
             <Card title="个人资产" style={{fontSize:20}}>
               <p>本金汇总:{this.state.principal}￥</p>
               <p>资产汇总:{this.state.total + this.state.bonusLeft + this.state.sellLeft}￥</p>
