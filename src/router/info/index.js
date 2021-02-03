@@ -40,6 +40,15 @@ class InfoList extends React.Component {
             title: '当前价',
             dataIndex: 'price',
         }, {
+            title: '买入成本',
+            dataIndex: 'buyCost',
+        }, {
+            title: '摊薄成本',
+            dataIndex: 'diluteCost',
+        }, {
+            title: '原始成本',
+            dataIndex: 'principal',
+        }, {
             title: '持仓账面盈亏',
             dataIndex: 'buyCost',
             render: (v, r) => {
